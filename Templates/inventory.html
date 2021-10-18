@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+<!-- inicia mi codigo-->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-body">
+            <form  class="needs-validation" action="/add_product" method="POST">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <input type="text" name="product" class="form-control" placeholder="Producto">
+                    </div>
+               
+                    <div class="col-md-3">
+                        <input type="text" name="price" class="form-control" placeholder="Precio">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="stock" class="form-control" placeholder="Stock">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <table>
+            <thead>
+            <tr>
+                <td>Producto</td>
+                <td>Precio</td>
+                <td>Stock</td>
+                <td>Acciones</td>
+            </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.1 }}</td>
+                        <td>{{ product.2 }}</td>
+                        <td>{{ product.3 }}</td>
+                        <td>
+                            <a href="/edit_product/{{product.0}}">Editar</a>
+                            <a href="/delete_product/{{product.0}}">Borrar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}        
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% endblock %}

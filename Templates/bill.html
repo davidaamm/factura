@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<form method="POST">
+    {{ form.csrf_token }}
+    {{ form.product }}
+    {{ form.price }}
+</form>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+<form  action="/update_product/{{ product.0 }}" method="POST">
+    <input type="text" name="product" placeholder="Product" value="{{ product.1 }}">
+    <input type="text" name="price" placeholder="Price" value="{{ product.2}}">
+    <input type="text" name="stock" placeholder="Stock" value="{{ product.3}}">
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}

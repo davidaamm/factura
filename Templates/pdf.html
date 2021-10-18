@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Platzi Bills</title>
+</head>
+<body>
+<div class="container">
+
+<div class="row justify-content-md-center">
+    <div class="col-md-7 col-md-offset-3 body-main">
+        <div class="col">
+            <div class="row">
+                <h2 class="display-6 text-center mb-4">Factura</h2>
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                        <thead>
+                            <tr>
+                            <th style="width: 10%;">#</th>
+                            <th style="width: 30%;">Producto</th>
+                            <th style="width: 20%;">Cantidad</th>
+                            <th style="width: 20%;">Precio</th>
+                            <th style="width: 20%;">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tick in ticket %}
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{tick.1}}</td>
+                                <td>{{tick.2}}</td>
+                                <td>${{tick.3}}</td>
+                                <td>${{tick.4}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    
+                        <tbody>
+                        {% if lendesc > 0 %}
+                        <tr>
+                            <th scope="row" ></th>
+                            <td></td>
+                            <td><span class="text-success" style="font-weight:bold">Descuento</span></td>
+                            <td class="text-success">{{descuento[0].1}}</td>
+                            <td class="text-success">- ${{descuento[0].4}}</td>
+                        </tr>
+                        {%endif%}
+                        <tr>
+                            <th scope="row" ></th>
+                            <td></td>
+                            <td></td>
+                            <td><span style="font-weight:bold">Total</span></td>
+                            <td><span style="font-weight:bold">${{total}}</span></td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
